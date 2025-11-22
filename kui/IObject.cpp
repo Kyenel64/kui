@@ -8,7 +8,5 @@
 
 #include "IObject.h"
 
-namespace kui
-{
-
+namespace kui {
 } // kui

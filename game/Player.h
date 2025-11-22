@@ -10,13 +10,11 @@
 
 #include "IObject.h"
 
-class Player : public kui::IObject
-{
+class Player : public kui::IObject {
 public:
-    Player() = default;
+  Player() = default;
 
-    void Think() override;
+  void Think() override;
 
 private:
-
 };

@@ -1,5 +1,3 @@
-#pragma once
-
 /*
 ===============================================================================
 
@@ -8,15 +6,25 @@
 ===============================================================================
 */
 
-namespace kui
-{
+#pragma once
 
-class Engine
-{
+#include "modules/window/Window.h"
+
+namespace kui {
+
+/**
+ * Core Engine class. Main loop runs here.
+ */
+class Engine {
 public:
-    Engine();
-    ~Engine() = default;
+  Engine();
+
+  ~Engine() = default;
+
+  void run();
+
 private:
+  Window* m_window = nullptr;
 };
 
-}
+} // kui

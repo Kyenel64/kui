@@ -1,22 +1,18 @@
 /*
 ===============================================================================
 
-    IObject
+    kuiPCH
 
 ===============================================================================
 */
 
 #pragma once
 
-namespace kui {
-  class IObject {
-  public:
-    IObject() = default;
-    virtual ~IObject() = default;
-
-    virtual void Think() {
-    };
-
-  private:
-  };
-} // kui
+// Standard library
+#include <cstdint>
+#include <iostream>
+#include <string>
+#include <functional>
+#include <filesystem>
+#include <memory>
+#include <vector>
