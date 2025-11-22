@@ -8,9 +8,15 @@
 
 #pragma once
 
+#include "modules/events/Event.h"
+
 class GLFWwindow;
 
 namespace kui {
+
+/*=============================================================================
+  Window
+=============================================================================*/
 
 class Window {
 public:
@@ -24,17 +30,20 @@ public:
 
   void poll_events();
 
-  //void dispatch_event(Event &p_event) const { if (m_event_callback) m_event_callback(p_event); }
+  void dispatch_event(Event &p_event) const { if (m_event_callback) m_event_callback(p_event); }
 
-  //template<typename Fn>
-  //void set_event_callback(Fn &&eventFn) { m_event_callback = std::forward<Fn>(eventFn); }
+  template<typename Fn>
+  void set_event_callback(Fn &&eventFn) { m_event_callback = std::forward<Fn>(eventFn); }
+
+private:
+  void register_callbacks();
 
 private:
   GLFWwindow *m_glfw_window = nullptr;
 
   std::string m_title;
   uint32_t m_width, m_height;
-  //std::function<void(Event &)> m_event_callback = nullptr;
+  std::function<void(Event &)> m_event_callback = nullptr;
 };
 
 } // kui

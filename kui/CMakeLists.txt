@@ -12,6 +12,9 @@ add_library(kui SHARED
         IObject.h
         modules/window/Window.cpp
         modules/window/Window.h
+        modules/events/Event.h
+        modules/input/Key.h
+        modules/input/MouseButton.h
 )
 
 target_link_libraries(kui PRIVATE glfw)
