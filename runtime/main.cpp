@@ -6,22 +6,17 @@
 ===============================================================================
 */
 
-#include <iostream>
-#include <dlfcn.h>
+#include <thread>
 
-#include <Engine.h>
-#include <IObject.h>
+#include <core/CoreGlobals.h>
+#include <EngineLoop.h>
 
-typedef kui::IObject* (*CreateObjectFunc)();
-typedef void (*DestroyObjectFunc)(kui::IObject*);
+kui::EngineLoop engine_loop;
 
-int main() {
-  // 1. Register engine factory objects
-  // 2. Load game dll
-  // 3. register game factory objects
-  // 4. Load scene
-  // 5. Run
-
+int main(int argc, const char* argv[]) {
+#if 0
+  typedef kui::IObject* (*CreateObjectFunc)();
+  typedef void (*DestroyObjectFunc)(kui::IObject*);
 
   void* handle = dlopen("./game/libgame.dylib", RTLD_LAZY);
   if (!handle) {
@@ -43,9 +38,24 @@ int main() {
   destroyFunc(playerObj);
   dlclose(handle);
 
-  kui::Engine engine;
+#endif
 
-  engine.run();
+  kui::g_game_thread_id = std::hash<std::thread::id>{}(std::this_thread::get_id());
+
+  // Be sure engine cleans up at all times. exit() gets called right before ~engine_loop()
+  struct EngineLoopCleanup {
+    ~EngineLoopCleanup() {
+      engine_loop.exit();
+    }
+  } cleanup_guard;
+
+  bool success = engine_loop.pre_init(); // load engine and game dlls.
+
+  success = engine_loop.init();
+
+  while (!kui::g_engine_exit_requested) {
+    engine_loop.tick();
+  }
 
   return 0;
 }

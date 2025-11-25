@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(kui_runtime CXX)
+project(kui_runtime C CXX)
+set(CMAKE_C_STANDARD 23)
 set(CMAKE_CXX_STANDARD 23)
 
 add_subdirectory(kui)
