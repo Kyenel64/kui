@@ -9,9 +9,6 @@
 #include "EngineLoop.h"
 #include "kuiPCH.h"
 
-#include <chrono>
-#include <thread>
-
 #include "Engine.h"
 
 #define MS_PER_UPDATE (1000.0f / 60)

@@ -5,11 +5,12 @@ set(CMAKE_CXX_STANDARD 23)
 
 include(deps.cmake)
 
-set(PLATFORM_SRCS "")
+set(PLATFORM_SRCS ""
+        core/PlatformTimer.h)
 
 if (APPLE)
     list(APPEND PLATFORM_SRCS
-            core/platform/osx/OSXPlatformTimer.h
+            core/platform/osx/OSXPlatformTimer.cpp
     )
 endif()
 
@@ -30,7 +31,7 @@ add_library(kui SHARED
         core/FrameTimer.cpp
         core/FrameTimer.h
         ${PLATFORM_SRCS}
-        core/IPlatformTimer.h
+        core/PlatformTimer.h
 )
 
 target_link_libraries(kui PRIVATE glfw)

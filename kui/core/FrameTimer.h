@@ -7,7 +7,7 @@
 */
 
 #pragma once
-#include "platform/osx/OSXPlatformTimer.h"
+#include "core/PlatformTimer.h"
 
 namespace kui {
 
