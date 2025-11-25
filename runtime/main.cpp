@@ -23,9 +23,11 @@ int main(int argc, const char* argv[]) {
     }
   } cleanup_guard;
 
-  bool success = engine_loop.pre_init(); // load engine and game dlls.
+  if (!engine_loop.pre_init()) // load engine and game dlls.
+    return 1;
 
-  success = engine_loop.init();
+  if (!engine_loop.init())
+    return 1;
 
   while (!kui::g_engine_exit_requested) {
     engine_loop.tick();
