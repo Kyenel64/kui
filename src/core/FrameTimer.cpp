@@ -8,7 +8,7 @@
 
 #include "FrameTimer.h"
 
-#include "core/PlatformTimer.h"
+#include <PlatformTimer.h>
 
 namespace kui {
 

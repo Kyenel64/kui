@@ -8,7 +8,10 @@
 
 #pragma once
 
-#include "modules/events/Event.h"
+#include <string>
+#include <functional>
+
+#include "PlatformEvent.h"
 
 class GLFWwindow;
 

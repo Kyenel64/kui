@@ -1,22 +1,16 @@
 /*
 ===============================================================================
 
-    IObject
+    core_globals
 
 ===============================================================================
 */
 
-#pragma once
+#include "CoreGlobals.h"
 
 namespace kui {
-  class IObject {
-  public:
-    IObject() = default;
-    virtual ~IObject() = default;
 
-    virtual void Think() {
-    };
+uint32_t g_game_thread_id = 0;
+bool g_engine_exit_requested = false;
 
-  private:
-  };
-} // kui
+}

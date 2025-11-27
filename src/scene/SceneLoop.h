@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "core/FrameTimer.h"
+#include "FrameTimer.h"
 
 namespace kui {
 

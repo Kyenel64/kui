@@ -1,12 +1,19 @@
 /*
 ===============================================================================
 
-    IObject
+    Engine
 
 ===============================================================================
 */
 
-#include "IObject.h"
+#include "Engine.h"
 
 namespace kui {
+
+Engine *g_engine = nullptr;
+
+Engine::Engine() {}
+
+Engine::~Engine() {}
+
 } // kui

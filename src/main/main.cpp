@@ -8,8 +8,8 @@
 
 #include <thread>
 
-#include <core/CoreGlobals.h>
-#include <EngineLoop.h>
+#include <CoreGlobals.h>
+#include <SceneLoop.h>
 
 kui::EngineLoop engine_loop;
 

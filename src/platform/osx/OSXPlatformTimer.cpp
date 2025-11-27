@@ -6,13 +6,11 @@
 ===============================================================================
 */
 
-#include "core/PlatformTimer.h"
-#include "kuiPCH.h"
+#include "PlatformTimer.h"
 
 #include <mach/mach_time.h>
 
 namespace kui {
-
 namespace PlatformTimer {
 
 static mach_timebase_info_data_t timebase_info;
@@ -45,5 +43,4 @@ uint64_t ms_to_cycles(const double ms) {
 }
 
 } // PlatformTimer
-
 } // kui

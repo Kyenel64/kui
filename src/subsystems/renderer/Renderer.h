@@ -1,7 +1,7 @@
 /*
 ===============================================================================
 
-    CoreGlobals
+    Renderer
 
 ===============================================================================
 */
@@ -10,7 +10,14 @@
 
 namespace kui {
 
-extern uint32_t g_game_thread_id;
-extern bool g_engine_exit_requested;
+// TODO
+class Renderer {
+public:
+  Renderer() = default;
+
+  ~Renderer() = default;
+
+private:
+};
 
 }

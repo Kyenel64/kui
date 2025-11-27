@@ -7,7 +7,8 @@
 */
 
 #include "Window.h"
-#include "kuiPCH.h"
+
+#include <iostream>
 
 #include <GLFW/glfw3.h>
 
@@ -57,9 +58,11 @@ void Window::poll_events() {
 void Window::register_callbacks() {
   // Window
   glfwSetWindowCloseCallback(m_glfw_window, [](GLFWwindow *window) {
-    if (const auto *win = static_cast<Window *>(glfwGetWindowUserPointer(window)); win->m_event_callback) {
-      WindowClosedEvent event;
-      win->m_event_callback(event);
+    if (const auto *win = static_cast<Window *>(glfwGetWindowUserPointer(window))) {
+      if (win->m_event_callback) {
+        WindowClosedEvent event;
+        win->m_event_callback(event);
+      }
     }
   });
 

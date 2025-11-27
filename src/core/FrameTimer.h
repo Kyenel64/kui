@@ -7,7 +7,8 @@
 */
 
 #pragma once
-#include "core/PlatformTimer.h"
+
+#include <PlatformTimer.h>
 
 namespace kui {
 

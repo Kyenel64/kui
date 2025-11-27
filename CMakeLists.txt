@@ -1,14 +1,12 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(kui_runtime C CXX)
-set(CMAKE_C_STANDARD 23)
+project(kui CXX)
 set(CMAKE_CXX_STANDARD 23)
 
-add_subdirectory(kui)
-add_subdirectory(game)
+add_subdirectory(src)
 
-add_executable(kui_runtime
-        runtime/main.cpp
+# main
+add_executable(kui
+        src/main/main.cpp
 )
-
-target_link_libraries(kui_runtime PRIVATE kui)
+target_link_libraries(kui PUBLIC Scene)

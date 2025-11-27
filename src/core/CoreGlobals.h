@@ -1,18 +1,18 @@
 /*
 ===============================================================================
 
-    kuiPCH
+    CoreGlobals
 
 ===============================================================================
 */
 
 #pragma once
 
-// Standard library
 #include <cstdint>
-#include <iostream>
-#include <string>
-#include <functional>
-#include <filesystem>
-#include <memory>
-#include <vector>
+
+namespace kui {
+
+extern uint32_t g_game_thread_id;
+extern bool g_engine_exit_requested;
+
+}

@@ -10,8 +10,8 @@
 
 #include <cstdint>
 
-#include "modules/input/Key.h"
-#include "modules/input/MouseButton.h"
+#include "Key.h"
+#include "MouseButton.h"
 
 
 namespace kui {
