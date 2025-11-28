@@ -1,7 +1,7 @@
 /*
 ===============================================================================
 
-    Window
+    NativeWindow
 
 ===============================================================================
 */
@@ -18,14 +18,14 @@ class GLFWwindow;
 namespace kui {
 
 /*=============================================================================
-  Window
+  NativeWindow
 =============================================================================*/
 
-class Window {
+class NativeWindow {
 public:
-  Window(const std::string &p_title, uint32_t p_width, uint32_t p_height, bool p_maximize = false);
+  NativeWindow(const std::string &p_title, uint32_t p_width, uint32_t p_height, bool p_maximize = false);
 
-  ~Window() = default;
+  ~NativeWindow() = default;
 
   bool should_close() const;
 

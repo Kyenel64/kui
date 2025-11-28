@@ -1,7 +1,7 @@
 /*
 ===============================================================================
 
-    Engine
+    EngineState
 
 ===============================================================================
 */
@@ -11,18 +11,26 @@
 namespace kui {
 
 /*=============================================================================
-  Engine
+  EngineState
 =============================================================================*/
 
 /**
- * Core Engine class. Main loop runs here.
+ * Holds config state of engine.
  */
-class Engine {
+class EngineState {
 public:
-  Engine();
-  ~Engine();
-};
+  EngineState();
+  ~EngineState();
 
-extern Engine *g_engine;
+  EngineState(const EngineState&) = delete;
+  EngineState& operator=(const EngineState&) = delete;
+
+  static EngineState* get() {
+    return m_singleton;
+  }
+
+private:
+  static EngineState* m_singleton;
+};
 
 } // kui

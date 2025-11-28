@@ -1,31 +1,24 @@
 /*
 ===============================================================================
 
-    EngineLoop
+    SceneLoop
 
 ===============================================================================
 */
 
 #include "SceneLoop.h"
 
-#include <Engine.h>
-
 #define MS_PER_UPDATE (1000.0f / 60)
 
 namespace kui {
 
-bool EngineLoop::pre_init() {
-  return true;
-}
+SceneLoop::SceneLoop() {}
 
-bool EngineLoop::init() {
-  g_engine = new Engine;
-
+void SceneLoop::init() {
   m_frame_timer.reset();
-  return true;
 }
 
-void EngineLoop::tick() {
+void SceneLoop::tick() {
 
   m_frame_timer.tick();
 
@@ -43,9 +36,7 @@ void EngineLoop::tick() {
   // double alpha = lag / 16; TODO: Alpha interpolate
   //g_engine->render();
 }
-void EngineLoop::exit() {
-  delete g_engine;
-  g_engine = nullptr;
-}
+
+void SceneLoop::exit() {}
 
 } // kui

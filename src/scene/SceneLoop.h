@@ -1,7 +1,7 @@
 /*
 ===============================================================================
 
-    EngineLoop
+    SceneLoop
 
 ===============================================================================
 */
@@ -9,18 +9,17 @@
 #pragma once
 
 #include "FrameTimer.h"
+#include "IMainLoop.h"
 
 namespace kui {
 
-class EngineLoop {
+class SceneLoop : public IMainLoop {
 public:
-  EngineLoop() = default;
-  ~EngineLoop() = default;
+  SceneLoop();
 
-  bool pre_init();
-  bool init();
-  void tick();
-  void exit();
+  void init() override;
+  void tick() override;
+  void exit() override;
 
 private:
   FrameTimer m_frame_timer;

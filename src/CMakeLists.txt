@@ -14,8 +14,8 @@ endif()
 
 add_library(Platform STATIC
         platform/PlatformTimer.h
-        platform/Window.h
-        platform/Window.cpp
+        platform/NativeWindow.h
+        platform/NativeWindow.cpp
         ${PLATFORM_SRCS}
 )
 target_include_directories(Platform PUBLIC platform)
@@ -25,12 +25,13 @@ target_link_libraries(Platform PRIVATE glfw)
 add_library(Core STATIC
         core/CoreGlobals.h
         core/CoreGlobals.cpp
-        core/Engine.h
-        core/Engine.cpp
+        core/EngineState.h
+        core/EngineState.cpp
         core/FrameTimer.h
         core/FrameTimer.cpp
         platform/Key.h
         platform/MouseButton.h
+        core/IMainLoop.h
 )
 target_include_directories(Core PUBLIC core)
 target_link_libraries(Core PUBLIC Platform)

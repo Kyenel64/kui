@@ -1,19 +1,22 @@
 /*
 ===============================================================================
 
-    Engine
+    MainLoop
 
 ===============================================================================
 */
 
-#include "Engine.h"
+#pragma once
 
 namespace kui {
 
-Engine *g_engine = nullptr;
+class IMainLoop {
+public:
+  virtual ~IMainLoop() = default;
 
-Engine::Engine() {}
+  virtual void init() = 0;
+  virtual void tick() = 0;
+  virtual void exit() = 0;
+};
 
-Engine::~Engine() {}
-
-} // kui
+}
