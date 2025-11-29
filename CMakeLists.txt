@@ -56,6 +56,8 @@ target_link_libraries(Core PUBLIC Platform spdlog)
 add_library(Subsystems STATIC
         src/subsystems/renderer/Renderer.h
         src/subsystems/renderer/Renderer.cpp
+        src/subsystems/window/Window.h
+        src/subsystems/window/Window.cpp
 )
 target_include_directories(Subsystems PUBLIC src/subsystems)
 target_link_libraries(Subsystems PUBLIC Core)
