@@ -19,15 +19,14 @@ namespace kui {
  */
 class EngineState {
 public:
+  static EngineState* get();
+
   EngineState();
   ~EngineState();
 
   EngineState(const EngineState&) = delete;
   EngineState& operator=(const EngineState&) = delete;
 
-  static EngineState* get() {
-    return m_singleton;
-  }
 
 private:
   static EngineState* m_singleton;

@@ -13,13 +13,18 @@
 
 namespace kui {
 
-EngineState *EngineState::m_singleton = nullptr;
+EngineState* EngineState::m_singleton = nullptr;
+
+EngineState* EngineState::get() {
+  return m_singleton;
+}
 
 EngineState::EngineState() {
   if (m_singleton != nullptr) {
     std::cerr << "Engine singleton already instantiated" << std::endl;
     assert(false);
   }
+
   m_singleton = this;
 }
 
