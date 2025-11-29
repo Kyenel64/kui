@@ -8,6 +8,8 @@
 
 #include "SceneLoop.h"
 
+#include "window/Window.h"
+
 #define MS_PER_UPDATE (1000.0f / 60)
 
 namespace kui {
@@ -22,7 +24,7 @@ void SceneLoop::tick() {
 
   m_frame_timer.tick();
 
-  //g_engine->get_window()->poll_events();
+  Window::get()->poll_events();
 
   int updateCount = 0;
   while (m_frame_timer.get_lag_ms() >= MS_PER_UPDATE && updateCount < 5)

@@ -40,6 +40,8 @@ target_link_libraries(Core PUBLIC Platform)
 add_library(Subsystems STATIC
         subsystems/renderer/Renderer.h
         subsystems/renderer/Renderer.cpp
+        subsystems/window/Window.cpp
+        subsystems/window/Window.h
 )
 target_include_directories(Subsystems PUBLIC subsystems)
 target_link_libraries(Subsystems PUBLIC Core)

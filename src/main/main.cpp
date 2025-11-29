@@ -14,15 +14,15 @@
 #include <SceneLoop.h>
 
 #include "EngineState.h"
+#include "window/Window.h"
 
 
 // platform, core objects
 static kui::EngineState* engine_state = nullptr;
 
 // subsystem objects
-//static kui::Window* window = nullptr;
+static kui::Window* window = nullptr;
 //static kui::Renderer* renderer = nullptr;
-
 
 static kui::IMainLoop* main_loop = nullptr;
 
@@ -36,15 +36,16 @@ static bool pre_init() {
 
 // Initialize subsystems
 static bool init() {
+  window = new kui::Window;
+
+  main_loop = new kui::SceneLoop;
 
   return true;
 }
 
 // Initialize and run main loop
 static void start() {
-  main_loop = new kui::SceneLoop;
-
-  // Create window using window module
+  window->create_window("kui", 640, 480);
 
   main_loop->init();
   while (!kui::g_engine_exit_requested) {
@@ -58,6 +59,8 @@ int main(int argc, const char* argv[]) {
   // Be sure to clean everything up at all times.
   struct CleanupGuard {
     ~CleanupGuard() {
+      delete window;
+
       delete main_loop;
       delete engine_state;
     }
