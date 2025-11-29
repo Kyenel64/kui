@@ -14,6 +14,7 @@
 #include <SceneLoop.h>
 
 #include "EngineState.h"
+#include "Log.h"
 
 
 // platform, core objects
@@ -31,12 +32,13 @@ static kui::IMainLoop* main_loop = nullptr;
 static bool pre_init() {
   engine_state = new kui::EngineState;
 
+  KUI_ASSERT(false, "failed");
+
   return true;
 }
 
 // Initialize subsystems
 static bool init() {
-
   return true;
 }
 
