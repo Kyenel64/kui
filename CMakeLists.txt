@@ -43,8 +43,8 @@ add_library(Core STATIC
         src/core/EngineState.cpp
         src/core/FrameTimer.h
         src/core/FrameTimer.cpp
-        src/platform/Key.h
-        src/platform/MouseButton.h
+        src/core/Key.h
+        src/core/MouseButton.h
         src/core/IMainLoop.h
         src/core/Log.cpp
         src/core/Log.h

@@ -9,9 +9,6 @@
 #pragma once
 
 #include <string>
-#include <functional>
-
-#include "PlatformEvent.h"
 
 class GLFWwindow;
 
@@ -38,8 +35,6 @@ public:
 
 private:
   GLFWwindow *m_glfw_window = nullptr;
-
-  std::function<void(Event &)> m_event_callback = nullptr;
 };
 
 } // kui

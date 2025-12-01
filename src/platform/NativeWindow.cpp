@@ -46,6 +46,7 @@ bool NativeWindow::create_window(const std::string& title, int width, int height
   m_glfw_window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
 
   if (!m_glfw_window) {
+    std::cerr << "Failed to create glfw window" << std::endl;
     glfwTerminate();
     return false;
   }
