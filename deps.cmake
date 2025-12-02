@@ -15,3 +15,13 @@ FetchContent_Declare(
         GIT_TAG "486b55554f11c9cccc913e11a87085b2a91f706f" # v1.16
 )
 FetchContent_MakeAvailable(spdlog)
+
+# googletest
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY "https://github.com/google/googletest"
+        GIT_TAG "v1.17.0"
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
