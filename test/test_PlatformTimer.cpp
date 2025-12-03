@@ -9,7 +9,6 @@
 #include <gtest/gtest.h>
 #include <PlatformTimer.h>
 
-#include <iostream>
 #include <thread>
 #include <chrono>
 using namespace std::chrono_literals;
@@ -29,5 +28,10 @@ TEST(PlatformTimer, MonotonicCycles) {
 TEST(PlatformTimer, ProperConversions) {
   uint64_t cycles = kui::PlatformTimer::cycles();
   double seconds = kui::PlatformTimer::cycles_to_seconds(cycles);
-  EXPECT_GE(cycles, seconds);
+  EXPECT_GT(cycles, seconds);
+
+  double zero_seconds = kui::PlatformTimer::cycles_to_seconds(0);
+  ASSERT_EQ(zero_seconds, 0);
+  uint64_t zero_cycles = kui::PlatformTimer::ms_to_cycles(0);
+  ASSERT_EQ(zero_cycles, 0);
 }

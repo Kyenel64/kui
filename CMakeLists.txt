@@ -85,7 +85,9 @@ if (KUI_BUILD_TESTS)
 
     add_executable(kui_test
             test/test_PlatformTimer.cpp
-
+            test/test_NativeWindow.cpp
+            test/Test_FrameTimer.cpp
+            test/test_Log.cpp
     )
     target_link_libraries(kui_test PRIVATE Scene GTest::gtest_main)
     include(GoogleTest)
