@@ -28,3 +28,12 @@ enum MouseButton: int {
 };
 
 } // kui
+
+template <>
+struct fmt::formatter<kui::MouseButton> : fmt::formatter<int>
+{
+  auto format(const kui::MouseButton mouse_button, fmt::format_context& ctx) const
+  {
+    return formatter<int>::format(mouse_button, ctx);
+  }
+};

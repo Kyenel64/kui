@@ -13,12 +13,12 @@
 namespace kui {
 
 FrameTimer::FrameTimer() {
-  m_last_cycles = PlatformTimer::cycles();
+  reset();
 }
 
 void FrameTimer::subtract_lag(const double ms) {
   const uint64_t cycles = PlatformTimer::ms_to_cycles(ms);
-  m_lag_cycles -= cycles;
+  m_lag_cycles = cycles >= m_lag_cycles ? 0 : m_lag_cycles - cycles;
 }
 
 void FrameTimer::tick() {
@@ -32,6 +32,8 @@ void FrameTimer::tick() {
 
 void FrameTimer::reset() {
   m_last_cycles = PlatformTimer::cycles();
+  m_delta_cycles = 0;
+  m_lag_cycles = 0;
 }
 
 } // kui

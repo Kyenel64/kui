@@ -76,3 +76,21 @@ add_executable(kui
         src/main/main.cpp
 )
 target_link_libraries(kui PUBLIC Scene)
+
+
+# tests
+option(KUI_BUILD_TESTS "Build kui unit tets" ON)
+if (KUI_BUILD_TESTS)
+    enable_testing()
+
+    add_executable(kui_test
+            test/test_PlatformTimer.cpp
+            test/test_NativeWindow.cpp
+            test/Test_FrameTimer.cpp
+            test/test_Log.cpp
+    )
+    target_link_libraries(kui_test PRIVATE Scene GTest::gtest_main)
+    include(GoogleTest)
+    gtest_discover_tests(kui_test)
+
+endif()

@@ -145,3 +145,12 @@ enum Keycode: int {
 };
 
 } // kui
+
+template <>
+struct fmt::formatter<kui::Keycode> : fmt::formatter<int>
+{
+  auto format(const kui::Keycode key, fmt::format_context& ctx) const
+  {
+    return formatter<int>::format(key, ctx);
+  }
+};
