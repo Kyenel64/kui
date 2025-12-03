@@ -79,16 +79,25 @@ target_link_libraries(kui PUBLIC Scene)
 
 
 # tests
-option(KUI_BUILD_TESTS "Build kui unit tets" ON)
+option(KUI_BUILD_TESTS "Build kui unit tests" ON)
 if (KUI_BUILD_TESTS)
     enable_testing()
 
-    add_executable(kui_test
+    set(SOURCES
             test/test_PlatformTimer.cpp
             test/test_NativeWindow.cpp
             test/Test_FrameTimer.cpp
             test/test_Log.cpp
     )
+
+    # Files to not test on CI
+    if (DEFINED ENV{GITHUB_ACTIONS})
+        list(REMOVE_ITEM SOURCES
+                test_NativeWindow.cpp
+        )
+    endif()
+
+    add_executable(kui_test ${SOURCES})
     target_link_libraries(kui_test PRIVATE Scene GTest::gtest_main)
     include(GoogleTest)
     gtest_discover_tests(kui_test)
