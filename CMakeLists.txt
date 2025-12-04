@@ -93,7 +93,7 @@ if (KUI_BUILD_TESTS)
     # Files to not test on CI
     if (DEFINED ENV{GITHUB_ACTIONS})
         list(REMOVE_ITEM SOURCES
-                test_NativeWindow.cpp
+                test/test_NativeWindow.cpp
         )
     endif()
 
