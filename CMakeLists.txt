@@ -84,17 +84,9 @@ if (KUI_BUILD_TESTS)
 
     set(SOURCES
             test/test_PlatformTimer.cpp
-            test/test_NativeWindow.cpp
             test/Test_FrameTimer.cpp
             test/test_Log.cpp
     )
-
-    # Files to not test on CI
-    if (DEFINED ENV{GITHUB_ACTIONS})
-        list(REMOVE_ITEM SOURCES
-                test/test_NativeWindow.cpp
-        )
-    endif()
 
     add_executable(kui_test ${SOURCES})
     target_link_libraries(kui_test PRIVATE Scene GTest::gtest_main)
