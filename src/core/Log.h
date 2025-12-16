@@ -12,7 +12,37 @@
 
 #include <memory>
 
+#include "Key.h"
+#include "MouseButton.h"
+
+/*=============================================================================
+  Custom formattings
+=============================================================================*/
+
+namespace fmt {
+  // Keycode
+  template <>
+  struct formatter<kui::Keycode> : formatter<int> {
+    auto format(const kui::Keycode key, format_context& ctx) const {
+      return formatter<int>::format(key, ctx);
+    }
+  };
+
+  // MouseButton
+  template <>
+  struct formatter<kui::MouseButton> : formatter<int> {
+    auto format(const kui::MouseButton mouse_button, format_context& ctx) const {
+      return formatter<int>::format(mouse_button, ctx);
+    }
+  };
+} // fmt
+
+
 namespace kui {
+
+/*=============================================================================
+  Log
+=============================================================================*/
 
 class Log {
 public:

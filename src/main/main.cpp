@@ -14,11 +14,14 @@
 #include <SceneLoop.h>
 
 #include "EngineState.h"
+#include "Event.h"
 #include "window/Window.h"
+#include "Key.h"
 
 
 // platform, core objects
 static kui::EngineState* engine_state = nullptr;
+static kui::EventQueue* event_queue = nullptr;
 
 // subsystem objects
 static kui::Window* window = nullptr;
@@ -30,6 +33,7 @@ static kui::IMainLoop* main_loop = nullptr;
 // Initialize engine and low level systems
 static bool pre_init() {
   engine_state = new kui::EngineState;
+  event_queue = new kui::EventQueue(256);
 
   return true;
 }
@@ -62,6 +66,7 @@ int main(int argc, const char* argv[]) {
       delete window;
 
       delete main_loop;
+      delete event_queue;
       delete engine_state;
     }
   } cleanup_guard;

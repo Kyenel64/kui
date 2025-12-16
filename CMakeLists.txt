@@ -28,12 +28,9 @@ endif()
 
 add_library(Platform STATIC
         src/platform/PlatformTimer.h
-        src/platform/NativeWindow.h
-        src/platform/NativeWindow.cpp
         ${PLATFORM_SRCS}
 )
 target_include_directories(Platform PUBLIC src/platform)
-target_link_libraries(Platform PRIVATE glfw)
 
 # Core layer
 add_library(Core STATIC
@@ -48,9 +45,11 @@ add_library(Core STATIC
         src/core/IMainLoop.h
         src/core/Log.cpp
         src/core/Log.h
+        src/core/Event.h
+        src/core/Event.cpp
 )
 target_include_directories(Core PUBLIC src/core)
-target_link_libraries(Core PUBLIC Platform spdlog)
+target_link_libraries(Core PUBLIC Platform spdlog::spdlog)
 
 # Subsystems layer
 add_library(Subsystems STATIC
@@ -60,7 +59,7 @@ add_library(Subsystems STATIC
         src/subsystems/window/Window.cpp
 )
 target_include_directories(Subsystems PUBLIC src/subsystems)
-target_link_libraries(Subsystems PUBLIC Core)
+target_link_libraries(Subsystems PUBLIC Core PRIVATE glfw)
 
 # Scene layer
 add_library(Scene STATIC
