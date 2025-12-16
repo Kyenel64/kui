@@ -10,7 +10,7 @@
 
 #include <string>
 
-#include "NativeWindow.h"
+class GLFWwindow;
 
 namespace kui {
 
@@ -28,10 +28,12 @@ public:
 
   void poll_events();
 
+  void set_maximized();
+
 private:
   static Window* m_singleton;
 
-  NativeWindow m_native_window;
+  GLFWwindow* m_glfw_window = nullptr;
 
   std::string m_title;
   int m_width = 0, m_height = 0;
