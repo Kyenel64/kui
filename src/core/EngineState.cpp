@@ -8,8 +8,7 @@
 
 #include "EngineState.h"
 
-#include <assert.h>
-#include <iostream>
+#include "Log.h"
 
 namespace kui {
 
@@ -20,11 +19,7 @@ EngineState* EngineState::get() {
 }
 
 EngineState::EngineState() {
-  if (m_singleton != nullptr) {
-    std::cerr << "Engine singleton already instantiated" << std::endl;
-    assert(false);
-  }
-
+  KUI_ASSERT(!m_singleton, "EngineState singleton already instantiated");
   m_singleton = this;
 }
 

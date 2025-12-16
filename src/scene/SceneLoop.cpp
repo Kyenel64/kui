@@ -8,11 +8,10 @@
 
 #include "SceneLoop.h"
 
+#include "EngineState.h"
 #include "Event.h"
 #include "Log.h"
 #include "window/Window.h"
-
-#define MS_PER_UPDATE (1000.0f / 60)
 
 namespace kui {
 
@@ -34,16 +33,18 @@ void SceneLoop::init() {
 }
 
 void SceneLoop::tick() {
+  const float ms_per_update = EngineState::get()->get_ms_per_update();
+
   m_frame_timer.tick();
 
   Window::get()->poll_events();
   EventQueue::get()->process_all();
 
   int updateCount = 0;
-  while (m_frame_timer.get_lag_ms() >= MS_PER_UPDATE && updateCount < 5)
+  while (m_frame_timer.get_lag_ms() >= ms_per_update && updateCount < 5)
   {
     //g_engine->fixed_tick();
-    m_frame_timer.subtract_lag(MS_PER_UPDATE);
+    m_frame_timer.subtract_lag(ms_per_update);
     updateCount++;
   }
 

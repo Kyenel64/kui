@@ -16,7 +16,6 @@
 #include "EngineState.h"
 #include "Event.h"
 #include "window/Window.h"
-#include "Key.h"
 
 
 // platform, core objects
@@ -26,11 +25,10 @@ static kui::EventQueue* event_queue = nullptr;
 // subsystem objects
 static kui::Window* window = nullptr;
 //static kui::Renderer* renderer = nullptr;
-
 static kui::IMainLoop* main_loop = nullptr;
 
 
-// Initialize engine and low level systems
+// Create engine and low level systems
 static bool pre_init() {
   engine_state = new kui::EngineState;
   event_queue = new kui::EventQueue(256);
@@ -38,7 +36,7 @@ static bool pre_init() {
   return true;
 }
 
-// Initialize subsystems
+// Create subsystems & mainloop
 static bool init() {
   window = new kui::Window;
 
@@ -47,7 +45,7 @@ static bool init() {
   return true;
 }
 
-// Initialize and run main loop
+// Run main loop
 static void start() {
   window->create_window("kui", 640, 480);
 

@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "FrameTimer.h"
 #include "IMainLoop.h"
+#include "FrameTimer.h"
 
 namespace kui {
 
